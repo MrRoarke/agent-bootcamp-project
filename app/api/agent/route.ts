@@ -5,6 +5,47 @@ import RSSParser from 'rss-parser';
 import fs from 'fs/promises';
 import path from 'path';
 
+// Simple rate limiting storage (in production, use Redis or database)
+const requestCounts = new Map<string, { count: number; resetTime: number }>();
+
+// Rate limiting configuration
+const RATE_LIMIT = {
+  maxRequests: 10,        // Max 10 requests per IP
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  dailyLimit: 50          // Max 50 requests per day per IP
+};
+
+function getClientIP(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIP = request.headers.get('x-real-ip');
+  return forwarded?.split(',')[0] || realIP || 'unknown';
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; error?: string } {
+  const now = Date.now();
+  const key = ip;
+  const current = requestCounts.get(key);
+  
+  // Reset if window expired
+  if (!current || now > current.resetTime) {
+    requestCounts.set(key, { count: 1, resetTime: now + RATE_LIMIT.windowMs });
+    return { allowed: true };
+  }
+  
+  // Check if over limit
+  if (current.count >= RATE_LIMIT.maxRequests) {
+    return { 
+      allowed: false, 
+      error: `Rate limit exceeded. Max ${RATE_LIMIT.maxRequests} requests per 15 minutes. Try again later.`
+    };
+  }
+  
+  // Increment count
+  current.count++;
+  requestCounts.set(key, current);
+  return { allowed: true };
+}
+
 // Security knowledge base (simple in-memory store for demo)
 const securityKnowledgeBase = [
   {
@@ -38,6 +79,20 @@ const securityFeeds = [
 ];
 
 export async function POST(req: Request) {
+  // Check rate limit
+  const clientIP = getClientIP(req);
+  const rateLimitCheck = checkRateLimit(clientIP);
+  
+  if (!rateLimitCheck.allowed) {
+    return new Response(JSON.stringify({ 
+      error: rateLimitCheck.error,
+      type: 'rate_limit_exceeded'
+    }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
   const { messages } = await req.json();
 
   const result = await streamText({
