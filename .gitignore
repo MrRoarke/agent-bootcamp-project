@@ -10,6 +10,7 @@ wheels/
 
 # Environment variables
 .env
+.env.local
 
 # Node.js
 node_modules/
@@ -20,6 +21,13 @@ yarn-error.log*
 # TypeScript
 dist/
 *.tsbuildinfo
+
+# Next.js
+.next/
+out/
+
+# Local files
+security-digests/
 
 # IDE
 .vscode/
