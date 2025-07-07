@@ -63,6 +63,101 @@ npm run dev
 - **📋 Phase 3** (Weeks 9-12): Automated remediation system (Planned)
 - **📋 Phase 4** (Weeks 13-16): Continuous monitoring and threat intelligence (Planned)
 
+### Capstone Documentation Structure
+
+The comprehensive capstone documentation will be organized across multiple files for professional standards and easy navigation:
+
+#### **File Organization Structure:**
+
+**1. `/docs/PROJECT_OVERVIEW.md`**
+**Contains:** The motivation and academic context section
+```markdown
+# SecureGuard AI - Project Overview
+
+## Project Motivation and Purpose
+[The section about CVE-2025-49596 inspiration]
+
+## Academic and Professional Goals
+[AI Agent Bootcamp, NYU application, etc.]
+
+## Academic Value Proposition
+[Why this demonstrates graduate school readiness]
+```
+
+**2. `/docs/PRD.md`** 
+**Contains:** The complete Product Requirements Document
+```markdown
+# SecureGuard AI - Product Requirements Document (PRD)
+
+## Overview
+[Building an AI-powered cybersecurity assistant...]
+
+## User Stories
+[All the user stories]
+
+## Project Timeline: 12-16 Weeks Total
+[All 4 phases with detailed breakdowns]
+
+## Design / Implementation
+[Technical requirements for each phase]
+
+## Requirements (Security, Performance, Usability)
+## Success Metrics and Evaluation
+```
+
+**3. `/docs/ARCHITECTURE.md`** 
+**Contains:** Technical architecture details
+```markdown
+# Technical Architecture
+
+## System Overview
+## Component Design
+## Data Flow
+## Security Considerations
+## Technology Stack Details
+```
+
+**4. `/docs/ACADEMIC_CONTEXT.md`**
+**Contains:** NYU application materials
+```markdown
+# Academic Documentation
+
+## Graduate School Application Materials
+## Key Talking Points for NYU Application
+## Research Methodology
+## Learning Outcomes
+```
+
+#### **Complete Directory Structure:**
+
+```
+agent-bootcamp-project/
+├── README.md                    # Short overview + quick start
+├── docs/
+│   ├── PROJECT_OVERVIEW.md      # Motivation & goals
+│   ├── PRD.md                   # Complete requirements doc
+│   ├── ARCHITECTURE.md          # Technical details
+│   ├── ACADEMIC_CONTEXT.md      # Graduate school materials
+│   └── PROGRESS.md              # Development updates
+├── src/                         # Source code
+├── tests/                       # Test suite
+├── data/                        # CVE databases
+├── presentations/               # Academic presentations
+└── reports/                     # Progress reports
+```
+
+#### **Why This Organization Works:**
+
+1. **Professional Standards** - Follows software industry documentation practices
+2. **Easy Navigation** - Reviewers can find exactly what they need
+3. **Academic Friendly** - Professors can easily access relevant sections
+4. **Maintainable** - You can update sections independently
+5. **Scalable** - Easy to add more documentation as project grows
+
+The **README.md stays short and sweet**, while the **detailed content lives in organized `/docs/` files** where people expect to find comprehensive documentation.
+
+This structure will impress both technical reviewers (AI Agent Bootcamp) and academic reviewers (NYU admissions) because it demonstrates professional software development practices.
+
 ## Technology Stack
 
 **Current (Assignment 2)**:
