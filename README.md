@@ -1,201 +1,81 @@
-# 🛡️ Security Agent - AI Bootcamp Capstone Project
+# SecureGuard AI
 
-A Next.js application with AI-powered security tools for cybersecurity professionals and enthusiasts. This capstone project demonstrates advanced AI agent capabilities with real-world security applications.
+> AI-powered cybersecurity assistant for vulnerability detection and automated remediation
 
-## 🚀 Features
+## Overview
 
-### 1. 📰 Security Digest Tool
-- **Purpose**: Generate Morning Brew-style daily digest for non-technical readers
-- **Sources**: Multiple cybersecurity RSS feeds including:
-  - ESET Security Blog
-  - Krebs on Security
-  - Dark Reading
-  - Bleeping Computer
-- **Output**: Markdown format saved to files + displayed in web interface
-- **Format**: Easy-to-read summaries with key takeaways
+SecureGuard AI is a cybersecurity capstone project that helps developers identify, understand, and fix security vulnerabilities in their development environments. This project was specifically inspired by the critical RCE vulnerability (CVE-2025-49596) discovered in Anthropic's MCP Inspector, which highlighted the need for better security scanning tools for AI-assisted development workflows.
 
-### 2. 🔍 RAG Tool (Security Knowledge Search)
-- **Purpose**: Search through cybersecurity knowledge base
-- **Topics**: Prompt injection, Zero Trust, Supply Chain Security, NIST Framework
-- **Use Cases**: Answer questions about security concepts and best practices
-- **Format**: Detailed explanations for both technical and non-technical users
+The tool combines local network scanning, AI-powered vulnerability analysis, and automated remediation to make cybersecurity accessible to non-technical users while providing advanced capabilities for security professionals.
 
-## 🛠️ Tech Stack
+## Key Features
 
-- **Frontend**: Next.js 14 + React + TypeScript + Tailwind CSS
-- **AI**: AI SDK + OpenAI GPT-4o
-- **Tools**: RSS Parser for news feeds
-- **Architecture**: AI SDK's `streamText` with multi-step reasoning (maxSteps: 10)
+- **🔍 Local Service Scanner** - Detects running services and exposed ports (including MCP Inspector on port 6277)
+- **🧠 AI-Powered Analysis** - Translates technical vulnerabilities into plain English explanations
+- **🛠️ Automated Remediation** - Provides guided fixes and automated patching for common issues
+- **⚡ Real-time Monitoring** - Continuous protection with threat intelligence integration
 
-## 📋 Prerequisites
+## Quick Start
 
-- Node.js 18+ (you already have v22.16.0 ✅)
-- OpenAI API key (already configured ✅)
-- npm or yarn
-
-## 🚀 Quick Start
-
-### 1. Install Dependencies
 ```bash
+# Clone the repository
+git clone https://github.com/MrRoarke/agent-bootcamp-project.git
+cd agent-bootcamp-project
+
+# Install dependencies
 npm install
-```
 
-### 2. Environment Setup
-Your `.env.local` should contain:
-```bash
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-### 3. Start Development Server
-```bash
+# Run the development server
 npm run dev
+
+# Open http://localhost:3000 in your browser
 ```
 
-### 4. Open Browser
-Navigate to: http://localhost:3000
+## Project Status
 
-## 🧪 Testing Instructions
+This project is being developed in phases as part of the AI Agent Bootcamp:
 
-### Test 1: Security Digest Generation
-1. Go to http://localhost:3000/agent
-2. Click "Generate Security Digest" or type: **"Generate my daily security digest"**
-3. **Expected Result**: 
-   - AI fetches latest security news from RSS feeds
-   - Creates Morning Brew-style digest
-   - Saves file to `security-digests/` folder
-   - Displays formatted digest in chat
+- **✅ Phase 1** (Weeks 1-4): Core service scanner and detection capabilities
+- **🚧 Phase 2** (Weeks 5-8): AI-powered vulnerability knowledge base (In Progress)
+- **📋 Phase 3** (Weeks 9-12): Automated remediation system (Planned)
+- **📋 Phase 4** (Weeks 13-16): Continuous monitoring and threat intelligence (Planned)
 
-### Test 2: RAG Knowledge Search
-1. In the agent interface, try these queries:
-   - **"What is prompt injection?"**
-   - **"Explain zero trust security"**
-   - **"What is the NIST Cybersecurity Framework?"**
-   - **"Tell me about supply chain security"**
+## Technology Stack
 
-2. **Expected Results**:
-   - AI searches knowledge base
-   - Returns relevant security information
-   - Explains concepts in simple terms
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS, shadcn/ui
+- **Backend**: Next.js API routes, SQLite database
+- **AI Integration**: OpenAI GPT-4o, vector embeddings for RAG
+- **Security**: Local-first processing, encrypted data storage
 
-### Test 3: Quick Actions
-1. Use the quick action buttons for instant testing
-2. Each button triggers a pre-configured prompt
-3. Verify both tools work through the UI
+## Documentation
 
-## 📁 Project Structure
+- **[📋 Complete PRD](./docs/PRD.md)** - Detailed product requirements and technical specifications
+- **[🎯 Project Overview](./docs/PROJECT_OVERVIEW.md)** - Motivation, goals, and academic context
+- **[🏗️ Architecture Guide](./docs/ARCHITECTURE.md)** - Technical implementation details
+- **[📊 Progress Reports](./docs/PROGRESS.md)** - Development timeline and milestones
 
-```
-app/
-├── api/agent/route.ts      # Main agent with 2 tools
-├── agent/page.tsx          # Agent chat interface
-├── layout.tsx              # Root layout
-├── page.tsx                # Home page
-└── globals.css             # Tailwind styles
+## Academic Context
 
-security-digests/           # Generated digest files
-.env.local                  # Environment variables
-```
+This capstone project serves multiple academic and professional goals:
 
-## 🛠️ Tool Implementation Details
+- **AI Agent Bootcamp**: Practical implementation of AI agents for cybersecurity
+- **Graduate Application**: Supporting material for NYU Cybersecurity Master's program
+- **Real-world Impact**: Addressing the specific vulnerability that affected thousands of developers
 
-### Security Digest Tool
-```typescript
-generateSecurityDigest: tool({
-  description: 'Generate daily security digest from RSS feeds',
-  parameters: z.object({
-    includeDate: z.boolean().default(true)
-  }),
-  execute: async ({ includeDate }) => {
-    // Fetches from multiple RSS feeds
-    // Creates formatted digest
-    // Saves to file system
-    // Returns structured response
-  }
-})
-```
+## Contributing
 
-### RAG Search Tool
-```typescript
-searchSecurityKnowledge: tool({
-  description: 'Search cybersecurity knowledge base',
-  parameters: z.object({
-    query: z.string()
-  }),
-  execute: async ({ query }) => {
-    // Keyword matching against knowledge base
-    // Returns relevant security topics
-    // Provides detailed explanations
-  }
-})
-```
+This is primarily an academic project, but feedback and suggestions are welcome! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
-## 🎯 Capstone Project Features
+## License
 
-- ✅ **Exactly 2 tools** implemented
-- ✅ **AI SDK pattern** followed from bootcamp
-- ✅ **RSS scraping** for security news (alternative to Twitter API)
-- ✅ **RAG functionality** with security knowledge base
-- ✅ **streamText with maxSteps: 10** for multi-step reasoning
-- ✅ **Non-technical friendly** output format
-- ✅ **File saving** for digest reports
-- ✅ **Web interface** for testing
-- ✅ **TypeScript** implementation
-- ✅ **Next.js** with proper structure
+MIT License - see [LICENSE](./LICENSE) for details.
 
-## 🧪 Capstone Deliverables Test
+## Contact
 
-1. **Run `npm run dev` ✅**
-2. **Go to `/agent` page ✅**
-3. **Ask: "Generate my daily security digest" ✅**
-4. **Ask: "What is prompt injection?" ✅**
-5. **See both tools working correctly ✅**
-6. **Find saved digest files in `security-digests/` ✅**
-7. **Push working code to GitHub ✅**
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-1. **OpenAI API Error**
-   - Check `.env.local` has correct API key
-   - Verify API key has sufficient credits
-
-2. **RSS Feed Timeout**
-   - Some feeds may be slow or unavailable
-   - Tool handles errors gracefully
-
-3. **Missing Dependencies**
-   - Run `npm install` again
-   - Check Node.js version (need 18+)
-
-### Development Commands
-
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-```
-
-## 🚀 Deployment
-
-Ready for deployment to Vercel, Netlify, or any Next.js hosting platform:
-
-```bash
-npm run build
-npm run start
-```
-
-## 📈 Future Enhancements
-
-- Vector database integration for better RAG
-- More security news sources
-- User authentication
-- Digest scheduling
-- Security alert subscriptions
-- Export to different formats (PDF, email)
+- **Developer**: [Your Name]
+- **Project**: Part of AI Agent Bootcamp capstone series
+- **Academic Context**: NYU Cybersecurity Master's program application
 
 ---
 
-**🎓 AI Bootcamp Capstone Project Complete!**
-*Security Agent with RAG and News Digest tools using AI SDK pattern*
+**⚠️ Important**: This tool is designed for educational and legitimate security testing purposes only. Always ensure you have proper authorization before scanning networks or systems.
