@@ -1,6 +1,6 @@
-# 🛡️ Security Agent - AI Bootcamp Assignment 2
+# 🛡️ Security Agent - AI Bootcamp Capstone Project
 
-A Next.js application with AI-powered security tools for cybersecurity professionals and enthusiasts.
+A Next.js application with AI-powered security tools for cybersecurity professionals and enthusiasts. This capstone project demonstrates advanced AI agent capabilities with real-world security applications.
 
 ## 🚀 Features
 
@@ -129,7 +129,7 @@ searchSecurityKnowledge: tool({
 })
 ```
 
-## 🎯 Assignment Requirements Checklist
+## 🎯 Capstone Project Features
 
 - ✅ **Exactly 2 tools** implemented
 - ✅ **AI SDK pattern** followed from bootcamp
@@ -142,7 +142,7 @@ searchSecurityKnowledge: tool({
 - ✅ **TypeScript** implementation
 - ✅ **Next.js** with proper structure
 
-## 🧪 Expected Deliverables Test
+## 🧪 Capstone Deliverables Test
 
 1. **Run `npm run dev` ✅**
 2. **Go to `/agent` page ✅**
@@ -150,7 +150,7 @@ searchSecurityKnowledge: tool({
 4. **Ask: "What is prompt injection?" ✅**
 5. **See both tools working correctly ✅**
 6. **Find saved digest files in `security-digests/` ✅**
-7. **Push working code to GitHub ⏳**
+7. **Push working code to GitHub ✅**
 
 ## 🔧 Troubleshooting
 
@@ -197,5 +197,5 @@ npm run start
 
 ---
 
-**🎓 AI Bootcamp Assignment 2 Complete!**
+**🎓 AI Bootcamp Capstone Project Complete!**
 *Security Agent with RAG and News Digest tools using AI SDK pattern*
